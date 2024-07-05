@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Password</title>
+    <script type="module" src="settings.js"></script>
+    <style>
+      .sidebar {
+        margin: 0;
+        padding: 5px;
+        width: 250px;
+        background-color: #000000;
+        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+        z-index: 1; /* Stay on top */
+        top: 0; /* Stay at the top */
+        left: 0;
+        height: 100%;
+        overflow: auto;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      /* Sidebar links */
+      .sidebar a {
+        text-align: center;
+        display: block;
+        padding: 20px;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+
+      /* Active/current link */
+      .sidebar a.active {
+        background-color: #86caef;
+        color: rgb(0, 0, 0);
+      }
+
+      /* Links on mouse-over */
+      .sidebar a:hover:not(.active) {
+        background-color: #86caef;
+        color: rgb(0, 0, 0);
+      }
+
+      /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+      div.content {
+        margin-left: 200px;
+        padding: 1px 16px;
+        height: 200px;
+      }
+
+      /* On screens that are less than 700px wide, make the sidebar into a topbar */
+      @media screen and (max-width: 700px) {
+        .sidebar {
+          width: 100%;
+          height: 20px;
+          position: relative;
+        }
+        /* .sidebar a {
+      float: left;
+    } */
+        div.content {
+          margin-left: 0;
+        }
+      }
+
+      /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+      @media screen and (max-width: 400px) {
+        .sidebar a {
+          text-align: center;
+          float: none;
+        }
+      }
+      .head h3 {
+        text-align: center;
+        color: #86caef;
+      }
+      .head {
+        width: 100%;
+        height: 30px;
+        padding-top: 50px;
+        padding-bottom: 70px;
+      }
+      hr {
+        background-color: #86caef;
+      }
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: aliceblue;
+      }
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input[type="password"],
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+      }
+      input[type="submit"] {
+        background-color: #64bae8;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #1e82b8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="head"><h3>S E C U R E W I N</h3></div>
+      <hr />
+
+      <div style="padding-top: 50px">
+        <a href="https://mockapi.io/projects/66859d08b3f57b06dd4d51a1"
+          >Publish Results</a
+        >
+        <a href="notify.html">Notify Winners</a>
+        <a href="main.html">Search Winner</a>
+        <a class="active" href="settings.html">Settings</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Change Password</h2>
+      <form action="submit" id="changePasswordForm" method="post">
+        <label for="currentPassword">Current Password:</label>
+        <input
+          type="password"
+          id="currentPassword"
+          name="currentPassword"
+          required
+        />
+
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required />
+
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+        />
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

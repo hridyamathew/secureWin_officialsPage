@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecureWin</title>
+    <script type="module" src="otp.js"></script>
+    <style>
+      /* The side navigation menu */
+      body {
+        background-color: aliceblue;
+        padding-top: 50px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+      .sidebar {
+        margin: 0;
+        padding: 5px;
+        width: 250px;
+        background-color: #000000;
+        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+        z-index: 1; /* Stay on top */
+        top: 0; /* Stay at the top */
+        left: 0;
+        height: 100%;
+        overflow: auto;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      /* Sidebar links */
+      .sidebar a {
+        text-align: center;
+        display: block;
+        padding: 20px;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+
+      /* Active/current link */
+      .sidebar a.active {
+        background-color: #86caef;
+        color: rgb(0, 0, 0);
+      }
+
+      /* Links on mouse-over */
+      .sidebar a:hover:not(.active) {
+        background-color: #86caef;
+        color: rgb(0, 0, 0);
+      }
+
+      /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+      div.content {
+        margin-left: 200px;
+        padding: 1px 16px;
+        height: 200px;
+      }
+
+      /* On screens that are less than 700px wide, make the sidebar into a topbar */
+      @media screen and (max-width: 700px) {
+        .sidebar {
+          width: 100%;
+          height: 20px;
+          position: relative;
+        }
+        /* .sidebar a {
+          float: left;
+        } */
+        div.content {
+          margin-left: 0;
+        }
+      }
+
+      /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+      @media screen and (max-width: 400px) {
+        .sidebar a {
+          text-align: center;
+          float: none;
+        }
+      }
+      .head h3 {
+        text-align: center;
+        color: #86caef;
+      }
+      .head {
+        width: 100%;
+        height: 30px;
+        padding-top: 50px;
+        padding-bottom: 70px;
+      }
+      hr {
+        background-color: #86caef;
+      }
+      .content h3 {
+        text-align: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .actions {
+        padding: 12px;
+      }
+      .actions button {
+        background: #86caef;
+        border: 1px solid #86caef;
+        color: #000000;
+        padding: 10px;
+        width: 100px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      .actions button:hover {
+        background: none;
+        border: 2px solid #86caef;
+        color: #000000;
+      }
+      .ticket {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        color: #ffffff;
+        background-color: #022331;
+        margin-left: 650px;
+        width: 400px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        border-left: 5px solid rgb(28, 137, 176);
+        border-top: 5px solid rgb(28, 137, 176);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .ticketDetails {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        width: 300px;
+        border-radius: 3px;
+        text-align: center;
+      }
+      .otp {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        width: 300px;
+      }
+      .otp input {
+        padding: 10px;
+      }
+      .input-wrapper {
+        position: relative;
+      }
+
+      .input-wrapper input {
+        border: 1px solid rgb(68, 90, 93);
+        border-radius: 6px;
+        position: relative;
+        width: 350px;
+        margin: 10px;
+        line-height: 6ex;
+        padding-left: 20px;
+      }
+
+      .input-wrapper label {
+        position: absolute;
+        top: 0.2ex;
+        z-index: 1;
+        left: 2em;
+        background-color: aliceblue;
+        padding: 0 5px;
+        font-size: small;
+      }
+      .input-wrapper-otp {
+        position: relative;
+      }
+      .input-wrapper-otp input {
+        border: 1px solid rgb(68, 90, 93);
+        border-radius: 6px;
+        position: relative;
+        width: 100px;
+        margin: 10px;
+        line-height: 1ex;
+      }
+
+      .input-wrapper-otp label {
+        position: absolute;
+        top: 0.2ex;
+        z-index: 1;
+        left: 2em;
+        background-color: rgb(255, 255, 255);
+        padding: 0 5px;
+        font-size: small;
+      }
+      .content_sub {
+        display: flex;
+        flex-direction: row;
+      }
+      .ticket {
+        display: none;
+      }
+      .loading-icon {
+        display: none;
+        border: 2px solid #f3f3f3; /* Light grey */
+        border-top: 2px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg) scale(1);
+        }
+        100% {
+          transform: rotate(360deg) scale(1);
+        }
+      }
+      .details {
+        font-weight: bold;
+      }
+      .main-otp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The sidebar -->
+    <div class="sidebar">
+      <div class="head"><h3>S E C U R E W I N</h3></div>
+      <hr />
+
+      <div style="padding-top: 50px">
+        <a href="https://mockapi.io/projects/66859d08b3f57b06dd4d51a1"
+          >Publish Results</a
+        >
+        <a href="notify.html">Notify Winners</a>
+        <a class="active" href="main.html">Search Winner</a>
+        <a href="settings.html">Settings</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <section>
+      <div class="content" id="search">
+        <div><h3>Search using ticket number</h3></div>
+        <form onsubmit="searchTicket(event)">
+          <div class="content_sub">
+            <div style="padding-bottom: 15px">
+              <div class="input-wrapper">
+                <label for="ticketNumber">ticket number</label>
+                <input type="text" id="ticketNumber" required />
+              </div>
+            </div>
+            <div class="actions">
+              <button type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+        <div id="loading-icon" class="loading-icon"></div>
+      </div>
+
+      <div class="ticket">
+        <div class="ticketDetails">
+          <div id="details"></div>
+          <br />
+          <!-- <div class="actions">
+          <button id="send-otp-btn">Send OTP</button>
+        </div>
+        <div id="recaptcha-container"></div> -->
+        </div>
+
+        <!-- <div class="main-otp">
+        <div id="otp" class="otp">
+          <div>
+            <div class="input-wrapper-otp">
+              <label for="otp">otp</label>
+              <input type="text" id="otp-input" />
+            </div>
+          </div>
+          <br />
+          <div class="actions">
+            <button id="verify-btn">Verify</button>
+          </div>
+        </div>
+        <div id="otp-timer"></div>
+      </div> -->
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.5.3/web3.min.js"></script>
+
+    <script src="block.js"></script>
+
+    <script>
+      function activateTab(tab) {
+        // Remove 'active' class from all tabs
+        var tabs = document.querySelectorAll(".sidebar a");
+        tabs.forEach(function (tab) {
+          tab.classList.remove("active");
+        });
+
+        // Add 'active' class to the clicked tab
+        tab.classList.add("active");
+      }
+    </script>
+
+    <!-- Firebase App (the core Firebase SDK) -->
+  </body>
+</html>

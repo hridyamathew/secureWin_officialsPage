@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecureWin | signup</title>
+    <style>
+      body {
+        background-color: rgb(225, 236, 243);
+        background-image: url(bg3.webp);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+      }
+      .box {
+        background-color: rgb(0, 0, 0);
+        max-height: 650px;
+        max-width: 900px;
+        border-radius: 5px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+        padding: 10px;
+      }
+
+      h6 {
+        color: #03c4eb;
+        text-align: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        font-weight: lighter;
+        font-size: medium;
+      }
+      .signup {
+        min-height: 500px;
+        min-width: 900px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(0, 0, 0);
+        margin-top: 0px;
+      }
+      .signup-form select {
+        background-color: #000000;
+        color: white;
+        width: 100%;
+        padding: 5px;
+        border-bottom: 1px solid #03c4eb;
+        border-top: hidden;
+        border-left: hidden;
+        border-right: hidden;
+      }
+      .signup-form input[type="name"],
+      .signup-form input[type="email"],
+      .signup-form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 3px;
+        border-radius: 1px;
+        box-sizing: border-box;
+        background-color: #000000;
+        border-bottom: 1px solid #03c4eb;
+        border-top: hidden;
+        border-left: hidden;
+        border-right: hidden;
+        color: white;
+      }
+      .signup-form button {
+        border-radius: 1px;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 5px;
+        background-color: #05a6c6;
+        color: white;
+        cursor: pointer;
+        border-color: #048fab;
+        border: hidden;
+      }
+      .signup-form button:hover {
+        background-color: black;
+        border: 2px solid #05a4c4;
+        color: white;
+      }
+      label {
+        color: rgb(191, 219, 237);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        font-size: small;
+      }
+      .signup-form {
+        width: 300px;
+        height: 400px;
+      }
+      .signup-form p,
+      .signup-form a {
+        color: aliceblue;
+        font-weight: lighter;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        font-size: small;
+        text-align: right;
+      }
+      .signup-form a:hover {
+        color: #048fab;
+      }
+      .error {
+        color: red;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        font-size: small;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h6>Create your account</h6>
+      <form onsubmit="signup(event)" id="personalInfoForm">
+        <div class="signup">
+          <div class="signup-form">
+            <label for="name">Full Name</label><br />
+            <input type="name" name="name" id="name" required /><br /><br />
+
+            <label for="email">Official Email</label><br />
+            <input type="email" name="email" id="email" required /><br /><br />
+
+            <label for="Department">Department</label><br /><br />
+            <select name="Department" id="department" required>
+              <option value="Select" selected>select</option>
+              <option value="Kerala State Lottery Department">
+                Kerala State Lottery Department
+              </option></select
+            ><br /><br />
+
+            <label for="Position">Position</label><br /><br />
+            <select name="Position" id="position" required>
+              <option value="Select" selected>select</option>
+              <option value="Chief Secretary">Chief Secretary</option>
+              <option value="Director">Director</option>
+              <option value="Finance Officer">Finance Officer</option>
+              <option value="Accounts Officer">Accounts Officer</option>
+              <option value="District Lottery Officer">
+                District Lottery Officer
+              </option></select
+            ><br /><br />
+
+            <label for="District">District</label><br /><br />
+            <select name="District" id="district" required>
+              <option value="Select" selected>select</option>
+              <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+              <option value="Kollam">Kollam</option>
+              <option value="Alappuzha">Alappuzha</option>
+              <option value="Pathanamthitta">Pathanamthitta</option>
+              <option value="Kottayam">Kottayam</option>
+              <option value="Idukki">Idukki</option>
+              <option value="Ernakulam">Ernakulam</option>
+              <option value="Thrissur">Thrissur</option>
+              <option value="Palakkad">Palakkad</option>
+              <option value="Malappuram">Malappuram</option>
+              <option value="Kozhikode">Kozhikode</option>
+              <option value="Wayanad">Wayanad</option>
+              <option value="Kannur">Kannur</option>
+              <option value="Kasaragod">Kasaragod</option>
+            </select>
+          </div>
+
+          <div class="signup-form">
+            <br /><br /><br /><br />
+            <label for="password">Password</label><br />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              oninput="validatePassword()"
+              onblur="clearError('passwordMessage')"
+              required
+            /><br />
+            <span id="passwordMessage" class="error"></span><br />
+            <label for="confirmPassword">Confirm Password</label><br />
+
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              oninput="validateConfirmPassword()"
+              onblur="clearError('confirmPasswordMessage')"
+              required
+            />
+            <br />
+            <span id="confirmPasswordMessage" class="error"></span>
+            <br /><br />
+
+            <button type="submit">SIGN UP</button>
+            <span id="submitErrorMessage" class="error"></span><br />
+            <p>already have an account? <a href="login.html">login</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script type="module" src="signup.js" defer></script>
+
+    <script>
+      function validatePassword() {
+        const passwordInput = document.getElementById("password");
+        const password = passwordInput.value;
+        const passwordMessage = document.getElementById("passwordMessage");
+
+        // Regular expressions to check password constraints
+        const lengthRegex = /.{8,}/;
+        const uppercaseRegex = /[A-Z]/;
+        const lowercaseRegex = /[a-z]/;
+        const numberRegex = /\d/;
+        const specialCharacterRegex = /[@#]/;
+
+        let errorMessage = "";
+
+        if (
+          !lengthRegex.test(password) ||
+          !uppercaseRegex.test(password) ||
+          !lowercaseRegex.test(password) ||
+          !numberRegex.test(password) ||
+          !specialCharacterRegex.test(password)
+        ) {
+          errorMessage +=
+            "atleast 8 characters long, contain atleast one uppercase, one lowercase, one number, one special character (@ or #)";
+        }
+
+        // Update the error message
+        passwordMessage.innerHTML = errorMessage;
+      }
+
+      function validateConfirmPassword() {
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+        const confirmPassword = confirmPasswordInput.value;
+        const confirmPasswordMessage = document.getElementById(
+          "confirmPasswordMessage"
+        );
+
+        const password = passwordInput.value;
+
+        let errorMessage = "";
+
+        if (password !== confirmPassword) {
+          errorMessage = "Passwords do not match";
+        }
+
+        // Update the error message
+        confirmPasswordMessage.innerHTML = errorMessage;
+      }
+
+      function clearError(elementId) {
+        document.getElementById(elementId).innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
